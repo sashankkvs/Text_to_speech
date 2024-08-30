@@ -1,0 +1,102 @@
+<!-- <!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <button onclick="">Read</button>
+
+    <script src="" async defer>
+        
+    </script>
+  </body>
+</html>
+
+To add a text-to-speech function to a basic HTML page, you can use the Web Speech API provided by modern browsers. Here’s how you can set it up:
+HTML Code:
+
+html -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text to Speech</title>
+  </head>
+  <body>
+    <h2>Text to Speech Converter</h2>
+    <textarea
+      id="textInput"
+      rows="4"
+      cols="50"
+      placeholder="Enter text here..."
+    ></textarea
+    ><br /><br />
+    <button onclick="speakText()">Speak Text</button>
+
+    <script>
+      function speakText() {
+        const text = document.getElementById("textInput").value;
+        const speech = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.speak(speech);
+      }
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Speech Demo</title>
+  </head>
+  <body>
+    <h2>Text to Speech and Speech to Text</h2>
+
+    <!-- Text to Speech Section -->
+    <textarea
+      id="textInput"
+      rows="4"
+      cols="50"
+      placeholder="Enter text here..."
+    ></textarea
+    ><br /><br />
+    <button onclick="speakText()">Speak Text</button>
+
+    <br /><br />
+
+    <!-- Speech to Text Section -->
+    <button onclick="startRecognition()">Speak</button>
+    <p id="output"></p>
+
+    <script>
+      // Text to Speech Function
+      function speakText() {
+        const text = document.getElementById("textInput").value;
+        const speech = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.speak(speech);
+      }
+
+      // Speech to Text Function
+      function startRecognition() {
+        const recognition = new (window.SpeechRecognition ||
+          window.webkitSpeechRecognition)();
+        recognition.lang = "en-US";
+        recognition.onresult = function (event) {
+          document.getElementById("output").innerText =
+            event.results[0][0].transcript;
+        };
+        recognition.start();
+      }
+    </script>
+  </body>
+</html>
